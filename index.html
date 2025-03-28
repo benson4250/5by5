@@ -1,131 +1,163 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>安盾安全服务有限公司</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>5 by 5</title>
+    <style>
+        :root {
+            --primary-color: #1e88e5;
+            --secondary-color: #4db6ac;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(rgba(30,136,229,0.8), rgba(30,136,229,0.9)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .intro-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .intro-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .intro-card:hover {
+            transform: translateY(-10px);
+        }
+        .intro-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 10px;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: var(--primary-color);
+        }
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="安盾安全logo">
+    <nav>
+        <div class="container">
+            <div>5 by 5</div>
+            <div>
+                <a href="index.html">首頁</a>
+                <a href="training.html">訓練項目</a>
+                <a href="partners.html">合作夥伴</a>
+                <a href="equipment.html">設備介紹</a>
+                <a href="contact.html">聯絡我們</a>
+            </div>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#home">首页</a></li>
-                <li><a href="#services">服务</a></li>
-                <li><a href="#about">关于我们</a></li>
-                <li><a href="#team">团队</a></li>
-                <li><a href="#contact">联系</a></li>
-            </ul>
-        </nav>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>安全5x5科技</h1>
+            <p>專業安全訓練與全方位解決方案</p>
+        </div>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h1>专业私人安全解决方案</h1>
-                <p>安盾安全 - 保护您的安全，守护您的价值</p>
-                <a href="#services" class="btn">了解我们的服务</a>
+    <div class="container">
+        <div class="intro-section">
+            <div class="intro-card">
+                <h2>空戰訓練</h2>
+                <p>全面的空中作戰策略訓練，提供高度專業化的空戰技能培訓。</p>
+                <a href="training.html#airwar" class="cta-button">了解詳情</a>
             </div>
-        </section>
-
-        <section id="services" class="services">
-            <h2>我们的服务</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <img src="images/personal-protection.png" alt="个人保护">
-                    <h3>个人保护</h3>
-                    <p>24小时贴身安全护卫，全方位保障您的人身安全</p>
-                </div>
-                <div class="service-card">
-                    <img src="images/venue-security.png" alt="场地安保">
-                    <h3>场地安保</h3>
-                    <p>专业团队驻守，为企业和活动提供全面安全保障</p>
-                </div>
-                <div class="service-card">
-                    <img src="images/risk-assessment.png" alt="风险评估">
-                    <h3>风险评估</h3>
-                    <p>专业分析潜在风险，提供定制化安全解决方案</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="about-content">
-                <h2>关于安盾安全</h2>
-                <p>成立于2010年的安盾安全，拥有一支经验丰富的专业安保团队。我们致力于为客户提供最高标准的安全服务，用专业和责任守护您的安全。</p>
-                <div class="company-stats">
-                    <div class="stat">
-                        <span>10+</span>
-                        <p>行业经验</p>
-                    </div>
-                    <div class="stat">
-                        <span>500+</span>
-                        <p>专业团队</p>
-                    </div>
-                    <div class="stat">
-                        <span>1000+</span>
-                        <p>服务客户</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="team" class="team">
-            <h2>我们的团队</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/team-1.jpg" alt="团队成员1">
-                    <h3>张明</h3>
-                    <p>首席安全官</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/team-2.jpg" alt="团队成员2">
-                    <h3>李强</h3>
-                    <p>高级安保经理</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/team-3.jpg" alt="团队成员3">
-                    <h3>王静</h3>
-                    <p>风险评估专家</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="contact">
-            <h2>联系我们</h2>
-            <div class="contact-info">
-                <div class="contact-details">
-                    <h3>联系方式</h3>
-                    <p>电话: 010-88888888</p>
-                    <p>邮箱: service@andun-security.com</p>
-                    <p>地址: 北京市朝阳区安全大街99号</p>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <input type="text" placeholder="您的姓名" required>
-                        <input type="email" placeholder="您的邮箱" required>
-                        <textarea placeholder="您的留言" required></textarea>
-                        <button type="submit" class="btn">发送消息</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>© 2024 安盾安全服务有限公司 | 版权所有</p>
-            <div class="social-links">
-                <a href="#" class="social-icon">微信</a>
-                <a href="#" class="social-icon">微博</a>
-                <a href="#" class="social-icon">LinkedIn</a>
+            <div class="intro-card">
+                <h2>陸戰CQB</h2>
+                <p>近距離戰鬥專業訓練，精準掌握城市作戰與緊急應變技能。</p>
+                <a href="training.html#cqb" class="cta-button">了解詳情</a>
             </div>
         </div>
-    </footer>
+    </div>
 
-    <script src="js/main.js"></script>
+    <div class="container">
+        <div class="intro-section">
+            <div class="intro-card">
+                <h2>我們的優勢</h2>
+                <p>擁有最先進的訓練設施、專業教官團隊和全面的訓練體系。我們致力於培養具有極致作戰能力的專業人才。</p>
+                <a href="partners.html" class="cta-button">合作夥伴</a>
+            </div>
+            <div class="intro-card">
+                <h2>訓練理念</h2>
+                <p>安全5x5科技堅信通過系統化、實戰化的訓練，可以最大程度提升作戰人員的生存能力和團隊協同能力。</p>
+                <a href="equipment.html" class="cta-button">設備介紹</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 安全5x5科技 版權所有</p>
+    </footer>
 </body>
 </html>
