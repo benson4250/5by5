@@ -865,6 +865,49 @@
     padding-left: 2rem;
     position: relative;
 }
+.logo-slider {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.logo-slide {
+    display: inline-block;
+    white-space: nowrap;
+    animation: slide 20s linear infinite;
+}
+
+.logo-item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    margin: 0 30px;
+    vertical-align: middle;
+}
+
+.logo-item img {
+    max-height: 100%;
+    max-width: 150px;
+    filter: grayscale(100%) brightness(1.5);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.logo-item img:hover {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
 
 .mission-phase {
     margin-bottom: 2.5rem;
@@ -1012,7 +1055,114 @@
                 transform: translateY(0);
             }
         }
-        
+        /* 合作夥伴區域 - 修正版 */
+.clients {
+    background: linear-gradient(rgba(13, 22, 12, 0.9), rgba(13, 22, 12, 0.9)), 
+                url('77.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    padding: 6rem 0;
+    position: relative; /* 新增 */
+    overflow: hidden; /* 新增 */
+}
+
+.partners-container {
+    width: 100%;
+    margin: 3rem auto 0;
+    position: relative;
+}
+
+.partners-mask {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.partners-mask::before,
+.partners-mask::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+}
+
+.partners-mask::before {
+    left: 0;
+    background: linear-gradient(to right, var(--camo-dark), transparent);
+}
+
+.partners-mask::after {
+    right: 0;
+    background: linear-gradient(to left, var(--camo-dark), transparent);
+}
+
+.partners-slider {
+    display: inline-block;
+    white-space: nowrap;
+    animation: slide 25s linear infinite;
+    padding: 1rem 0;
+}
+
+.partner-logo {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.partner-logo img {
+    height: 60px;
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.2);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.partner-logo:hover img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* 響應式調整 */
+@media (max-width: 768px) {
+    .partners-mask::before,
+    .partners-mask::after {
+        width: 50px;
+    }
+    
+    .partner-logo {
+        margin: 0 1.5rem;
+    }
+    
+    .partner-logo img {
+        height: 50px;
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partner-logo {
+        margin: 0 1rem;
+    }
+    
+    .partner-logo img {
+        height: 40px;
+        max-width: 100px;
+    }
+}
         .fade-in-up {
             animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -1329,21 +1479,56 @@
             </div>
         </section>
 
-        <section id="clients" class="clients">
-            <div class="container">
-                <div class="section-title fade-in-up">
-                    <h2>合作夥伴</h2>
-                    <p>我們與多個創作者保持合作關係</p>
-                </div>
-                <div class="client-logos fade-in-up delay-1">
-                    <img src="cia.png" alt="cia" class="client-logo">
-                    <img src="cia.png" alt="海軍" class="client-logo">
-                    <img src="t1.png" alt="政府" class="client-logo">
-                    <img src="cia.png" alt="國安局" class="client-logo">
-                    <img src="cia.png" alt="特戰司令部" class="client-logo">
+<!-- 在適當的section中替換原有客戶logo部分 -->
+<section id="clients" class="clients">
+    <div class="container">
+        <div class="section-title fade-in-up">
+            <h2>戰略合作夥伴</h2>
+            <p>我們與全球頂尖軍事和安全機構保持長期合作關係</p>
+        </div>
+
+        <!-- 修正後的logo滑動容器 -->
+        <div class="partners-container fade-in-up delay-1">
+            <div class="partners-mask">
+                <div class="partners-slider">
+                    <!-- 第一組Logo -->
+                    <div class="partner-logo">
+                        <img src="UC.jpg" alt="戰略合作夥伴1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴2">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="cia.png" alt="戰略合作夥伴3">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴4">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴5">
+                    </div>
+                    
+                    <!-- 重複第一組實現無縫循環 -->
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴1">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴2">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴3">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴4">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="t1.png" alt="戰略合作夥伴5">
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
         
 
         <section id="contact" class="contact">
