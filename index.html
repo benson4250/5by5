@@ -584,6 +584,16 @@
             filter: grayscale(0%) brightness(1);
             opacity: 1;
         }
+        #clients .section-title h2 {
+            color: var(--camo-accent);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        }
+
+        #clients .section-title p {
+            color: var(--camo-light);
+            max-width: 600px;
+        }
+
         
         .contact {
             background: linear-gradient(rgba(13, 22, 12, 0.95), rgba(13, 22, 12, 0.95)), 
@@ -864,7 +874,60 @@
     margin: 3rem 0;
     padding-left: 2rem;
     position: relative;
+        }
+/* 合作夥伴項目容器 */
+.partner-item {
+    display: inline-block;
+    margin: 0 40px; /* 左右間距加大 */
+    vertical-align: middle;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1;
 }
+.partner-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--camo-green);
+    color: var(--camo-accent);
+    padding: 8px 12px; /* 增加上下內邊距 */
+    font-size: 0.9rem;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    border: 1px solid var(--camo-accent);
+    border-radius: 4px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* 防止文字換行 */
+    z-index: 10;
+    pointer-events: none;
+    margin-top: 8px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    font-weight: bold;
+    min-width: max-content; /* 確保寬度足夠容納內容 */
+    max-width: 200px; /* 設置最大寬度 */
+    overflow: hidden; /* 隱藏超出內容 */
+    text-overflow: ellipsis; /* 超出時顯示省略號 */
+    text-align: center; /* 文字居中對齊 */
+    box-sizing: border-box; /* 確保padding包含在寬度內 */
+}
+
+/* 合併後的懸停效果 */
+.partner-item:hover .partner-tooltip {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;  /* 使用 top 定位 */
+    bottom: auto; /* 確保 bottom 不會干擾 */
+    transform: translateX(-50%); /* 保持水平居中 */
+    margin-top: 8px; /* 與圖片的間距 */
+}
+
+.partner-item:hover .partner-logo img {
+    transform: scale(1.2); /* 放大 20% */
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+}
+
 .logo-slider {
     width: 100%;
     overflow: hidden;
@@ -900,14 +963,6 @@
     opacity: 1;
 }
 
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
 
 .mission-phase {
     margin-bottom: 2.5rem;
@@ -1014,10 +1069,8 @@
 
 /* 响应式调整 */
 @media (max-width: 768px) {
-    .operation-timeline {
-        padding-left: 1.2rem;
-        margin: 2rem 0;
-    }
+    .partner-item { margin: 0 15px; }
+}
     
     .tactical-element {
         flex-direction: column;
@@ -1031,9 +1084,7 @@
     .phase-duration {
         margin-left: 0;
         width: 100%;
-    }
-}
-        
+    }   
         .back-to-top.active {
             opacity: 1;
             visibility: visible;
@@ -1073,8 +1124,8 @@
 
 .partners-mask {
     width: 100%;
-    overflow: hidden;
-    position: relative;
+    min-width: 100vw;      /* 確保至少填滿視窗寬度 */
+    overflow: hidden;      /* 隱藏超出部分 */
 }
 
 .partners-mask::before,
@@ -1099,9 +1150,9 @@
 
 .partners-slider {
     display: inline-block;
-    white-space: nowrap;
-    animation: slide 25s linear infinite;
-    padding: 1rem 0;
+    white-space: nowrap;   /* 防止換行 */
+    padding: 80px 0;       /* 增加上下內邊距 */
+    animation: slide 60s linear infinite; /* 控制速度 */
 }
 
 .partner-logo {
@@ -1111,14 +1162,17 @@
     transition: all 0.3s ease;
 }
 
+
 .partner-logo img {
-    height: 60px;
-    width: auto;
-    max-width: 180px;
-    object-fit: contain;
+    height: auto;       /* 高度自動，避免擠壓 */
+    width: 120px;       /* 固定寬度，按比例縮放高度 */
+    max-width: none;    /* 移除最大寬度限制 */
+    min-width: 80px;    /* 最小寬度避免太小 */
+    object-fit: contain; /* 保持比例，完整顯示圖片 */
     filter: grayscale(100%) brightness(1.2);
     opacity: 0.7;
     transition: all 0.3s ease;
+    padding: 10px;      /* 增加內邊距，避免圖片貼邊 */
 }
 
 .partner-logo:hover img {
@@ -1126,15 +1180,15 @@
     opacity: 1;
     transform: scale(1.05);
 }
-
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+.partner-item:hover .partner-logo img {
+    transform: scale(1.15) rotate(2deg); /* 添加微妙的旋轉效果 */
+    filter: grayscale(0%) brightness(1.1) drop-shadow(0 0 5px rgba(179, 141, 77, 0.7));
 }
+@keyframes slide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 10px)); }
+}
+
 
 /* 響應式調整 */
 @media (max-width: 768px) {
@@ -1477,58 +1531,44 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-<!-- 在適當的section中替換原有客戶logo部分 -->
-<section id="clients" class="clients">
-    <div class="container">
-        <div class="section-title fade-in-up">
-            <h2>戰略合作夥伴</h2>
-            <p>我們與全球頂尖軍事和安全機構保持長期合作關係</p>
-        </div>
-
-        <!-- 修正後的logo滑動容器 -->
-        <div class="partners-container fade-in-up delay-1">
-            <div class="partners-mask">
-                <div class="partners-slider">
-                    <!-- 第一組Logo -->
-                    <div class="partner-logo">
-                        <img src="UC.jpg" alt="戰略合作夥伴1">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴2">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="cia.png" alt="戰略合作夥伴3">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴4">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴5">
+            <section id="clients" class="clients">
+                <div class="container">
+                    <div class="section-title fade-in-up">
+                        <h2>戰略合作夥伴</h2>
+                        <p>我們與全球頂尖軍事和安全機構保持長期合作關係</p>
                     </div>
                     
-                    <!-- 重複第一組實現無縫循環 -->
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴1">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴2">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴3">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴4">
-                    </div>
-                    <div class="partner-logo">
-                        <img src="t1.png" alt="戰略合作夥伴5">
+                    <div class="partners-container fade-in-up delay-1">
+                        <div class="partners-mask">
+                            <div class="partners-slider">
+                                <!-- 實際合作夥伴數據 -->
+                                <div class="partner-item">
+                                    <div class="partner-logo">
+                                        <img src="UC.jpg" alt="Umbrella Corps Vietnam 2040s">
+                                    </div>
+                                    <div class="partner-tooltip">Umbrella Corps Vietnam 2040s</div>
+                                </div>
+                                
+                                <div class="partner-item">
+                                    <div class="partner-logo">
+                                        <img src="cia.png" alt="陸軍特戰部">
+                                    </div>
+                                    <div class="partner-tooltip">CIA</div>
+                                </div>
+                                
+                                <div class="partner-item">
+                                    <div class="partner-logo">
+                                        <img src="t1.png" alt="海軍特遣隊">
+                                    </div>
+                                    <div class="partner-tooltip">龍井營區</div>
+                                </div>
+                                
+                                <!-- 克隆的副本（由JS自動生成） -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            </section>
         
 
         <section id="contact" class="contact">
@@ -1732,6 +1772,60 @@ toggleWrapper.addEventListener('click', function() {
         }).catch(e => console.log("等待用户交互"));
         document.removeEventListener('click', initAudioPlay);
     }, { once: true });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.partners-slider');
+    const items = document.querySelectorAll('.partner-item');
+    const maskWidth = document.querySelector('.partners-mask').offsetWidth;
+    
+    // 自動檢測：如果圖片太少，動態克隆直到填滿2倍螢幕寬度
+    if (items.length < 6) {
+        const itemsWidth = Array.from(items).reduce((total, item) => {
+            return total + item.offsetWidth;
+        }, 0);
+        
+        // 計算需要克隆幾次（至少填滿2倍可視區域）
+        const clonesNeeded = Math.ceil((maskWidth * 2) / itemsWidth) * 2;
+        
+        // 執行克隆
+        for (let i = 0; i < clonesNeeded; i++) {
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                slider.appendChild(clone);
+            });
+        }
+    }
+    
+    // 動畫控制（保留原有無限滾動效果）
+    slider.style.animation = `slide ${items.length * 3}s linear infinite`;
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.partners-slider');
+    const items = document.querySelectorAll('.partner-item');
+    const mask = document.querySelector('.partners-mask');
+    
+    // 自動檢測：如果圖片太少，動態克隆直到填滿2倍螢幕寬度
+    if (items.length < 6) {
+        const itemsWidth = Array.from(items).reduce((total, item) => {
+            return total + item.offsetWidth;
+        }, 0);
+        
+        // 計算需要克隆幾次（至少填滿2倍可視區域）
+        const clonesNeeded = Math.ceil((mask.offsetWidth * 2) / itemsWidth) * 2;
+        
+        // 執行克隆
+        for (let i = 0; i < clonesNeeded; i++) {
+            items.forEach(item => {
+                const clone = item.cloneNode(true);
+                slider.appendChild(clone);
+            });
+        }
+    }
+    
+    // 設置動畫（調整60s控制速度）
+    slider.style.animation = `slide ${items.length * 5}s linear infinite`;
 });
     </script>
     <audio id="bgMusic" loop>
